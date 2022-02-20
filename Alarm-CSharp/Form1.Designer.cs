@@ -72,6 +72,7 @@
             this.checkBox7.TabIndex = 6;
             this.checkBox7.Text = "Domingo";
             this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += (sender, e) => changeSelectedCheckbox(sender, e, 6);
             // 
             // checkBox6
             // 
@@ -82,6 +83,7 @@
             this.checkBox6.TabIndex = 5;
             this.checkBox6.Text = "Sabado";
             this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += (sender, e) => changeSelectedCheckbox(sender, e, 5);
             // 
             // checkBox5
             // 
@@ -92,6 +94,7 @@
             this.checkBox5.TabIndex = 4;
             this.checkBox5.Text = "Viernes";
             this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += (sender, e) => changeSelectedCheckbox(sender, e, 4);
             // 
             // checkBox4
             // 
@@ -102,6 +105,7 @@
             this.checkBox4.TabIndex = 3;
             this.checkBox4.Text = "Jueves";
             this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += (sender, e) => changeSelectedCheckbox(sender, e, 3);
             // 
             // checkBox3
             // 
@@ -112,6 +116,7 @@
             this.checkBox3.TabIndex = 2;
             this.checkBox3.Text = "Miercoles";
             this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += (sender, e) => changeSelectedCheckbox(sender, e, 2);
             // 
             // checkBox2
             // 
@@ -122,6 +127,7 @@
             this.checkBox2.TabIndex = 1;
             this.checkBox2.Text = "Martes";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += (sender, e) => changeSelectedCheckbox(sender, e, 1);
             // 
             // checkBox1
             // 
@@ -132,6 +138,7 @@
             this.checkBox1.TabIndex = 0;
             this.checkBox1.Text = "Lunes";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += (sender, e) => changeSelectedCheckbox(sender, e, 0); 
             // 
             // timePicker1
             // 
