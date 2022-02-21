@@ -3,13 +3,17 @@ using System.IO;
 using System.Resources;
 using System.Media;
 using System.Diagnostics;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Alarm_CSharp
 {
+   
     public partial class Form1 : Form
     {
         private CheckBox[] _days;
-        private int[] _daysSelected; 
+        private int[] _daysSelected;
+        private Timer timer;
+        private int counter = 0; 
 
         public Form1(){
            
@@ -24,9 +28,16 @@ namespace Alarm_CSharp
             
             _days = new CheckBox[] { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, checkBox7 };
             _daysSelected = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
+            timer = new Timer
+            {
+                Interval = 1000
+            };
+            timer.Enabled = false;
+            timer.Tick += new System.EventHandler(OnTimerEvent);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            timePicker2 = timePicker1; 
             Assembly assembly;
             Stream soundStream;
             SoundPlayer sp;
@@ -46,7 +57,7 @@ namespace Alarm_CSharp
                     if (_daysSelected[e] == 1)
                         _daysSelected[e] = 0;
                 }
-            programmedLbl.Text = String.Join(" ", _daysSelected); 
+            
         }
         private void clearBtn_Click(object sender, EventArgs e){
             for (int i = 0; i < _days.Length; i++){
@@ -54,6 +65,39 @@ namespace Alarm_CSharp
             }
         }
 
-        
+        private void OnTimerEvent(object o, EventArgs e)
+        {
+            int d = (int)System.DateTime.Now.DayOfWeek; 
+            if (  _daysSelected[d] == 1 )
+            {
+                counter = timePicker1.Value.Hour - DateTime.Now.Hour; 
+                counter += timePicker1.Value.Minute - DateTime.Now.Minute;
+                counter += timePicker1.Value.Second - DateTime.Now.Second;
+                counter--;
+                programmedLbl.Text = ""+counter;
+            }
+            else
+            {
+                programmedLbl.Text = "No es hoy";
+            }
+           /* ; 
+           */
+        }
+
+        private void submitBtn_Click(object sender, EventArgs e)
+        {
+            /*if ()
+            {
+
+            }*/
+            /*counter = int.Parse(timePicker1.Value.Hour);
+            counter -= int.Parse(DateTime.Now.ToString("hhmmss"));*/
+            
+            //programmedLbl.Text = "" + d;
+            timer.Enabled = true; 
+            for(int i = 0; i < _days.Length; i++)
+                _days[i].Enabled = false;
+
+        }
     }
 }

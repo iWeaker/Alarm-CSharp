@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
@@ -45,7 +44,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.programmedLbl = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,9 +68,9 @@
             this.checkBox7.AutoSize = true;
             this.checkBox7.Location = new System.Drawing.Point(22, 187);
             this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(76, 19);
+            this.checkBox7.Size = new System.Drawing.Size(65, 19);
             this.checkBox7.TabIndex = 6;
-            this.checkBox7.Text = "Domingo";
+            this.checkBox7.Text = "Sabado";
             this.checkBox7.UseVisualStyleBackColor = true;
             // 
             // checkBox6
@@ -80,9 +78,9 @@
             this.checkBox6.AutoSize = true;
             this.checkBox6.Location = new System.Drawing.Point(22, 162);
             this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(65, 19);
+            this.checkBox6.Size = new System.Drawing.Size(64, 19);
             this.checkBox6.TabIndex = 5;
-            this.checkBox6.Text = "Sabado";
+            this.checkBox6.Text = "Viernes";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
             // checkBox5
@@ -90,9 +88,9 @@
             this.checkBox5.AutoSize = true;
             this.checkBox5.Location = new System.Drawing.Point(22, 137);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(64, 19);
+            this.checkBox5.Size = new System.Drawing.Size(60, 19);
             this.checkBox5.TabIndex = 4;
-            this.checkBox5.Text = "Viernes";
+            this.checkBox5.Text = "Jueves";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // checkBox4
@@ -100,9 +98,9 @@
             this.checkBox4.AutoSize = true;
             this.checkBox4.Location = new System.Drawing.Point(22, 112);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(60, 19);
+            this.checkBox4.Size = new System.Drawing.Size(77, 19);
             this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "Jueves";
+            this.checkBox4.Text = "Miercoles";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // checkBox3
@@ -110,9 +108,9 @@
             this.checkBox3.AutoSize = true;
             this.checkBox3.Location = new System.Drawing.Point(22, 87);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(77, 19);
+            this.checkBox3.Size = new System.Drawing.Size(62, 19);
             this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "Miercoles";
+            this.checkBox3.Text = "Martes";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // checkBox2
@@ -120,9 +118,9 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(22, 62);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(62, 19);
+            this.checkBox2.Size = new System.Drawing.Size(57, 19);
             this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "Martes";
+            this.checkBox2.Text = "Lunes";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox1
@@ -130,9 +128,9 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(22, 37);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(57, 19);
+            this.checkBox1.Size = new System.Drawing.Size(76, 19);
             this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Lunes";
+            this.checkBox1.Text = "Domingo";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // timePicker1
@@ -161,6 +159,7 @@
             this.submitBtn.TabIndex = 3;
             this.submitBtn.Text = "Aceptar";
             this.submitBtn.UseVisualStyleBackColor = true;
+            this.submitBtn.Click += new System.EventHandler(this.submitBtn_Click);
             // 
             // clearBtn
             // 
@@ -250,6 +249,5 @@
         private Label label2;
         private Label label3;
         private Label programmedLbl;
-        private System.Windows.Forms.Timer timer1;
     }
 }
