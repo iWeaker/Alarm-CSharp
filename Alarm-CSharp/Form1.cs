@@ -13,7 +13,10 @@ namespace Alarm_CSharp
         private CheckBox[] _days;
         private int[] _daysSelected;
         private Timer timer;
-        private int counter = 0; 
+        private int counter = 0;
+        private Assembly assembly;
+        private Stream soundStream;
+        private SoundPlayer sp;
 
         public Form1(){
            
@@ -37,10 +40,6 @@ namespace Alarm_CSharp
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            timePicker2 = timePicker1; 
-            Assembly assembly;
-            Stream soundStream;
-            SoundPlayer sp;
             assembly = Assembly.GetExecutingAssembly();
             sp = new SoundPlayer(assembly.GetManifestResourceStream
                 ("Alarm_CSharp.Sound.Alarm.wav"));
@@ -67,21 +66,16 @@ namespace Alarm_CSharp
 
         private void OnTimerEvent(object o, EventArgs e)
         {
-            int d = (int)System.DateTime.Now.DayOfWeek; 
-            if (  _daysSelected[d] == 1 )
+
+            counter--;
+            if (counter == 0)
             {
-                counter = timePicker1.Value.Hour - DateTime.Now.Hour; 
-                counter += timePicker1.Value.Minute - DateTime.Now.Minute;
-                counter += timePicker1.Value.Second - DateTime.Now.Second;
-                counter--;
-                programmedLbl.Text = ""+counter;
+                timer.Stop();
+                sp.Play();
             }
-            else
-            {
-                programmedLbl.Text = "No es hoy";
-            }
-           /* ; 
-           */
+                
+
+
         }
 
         private void submitBtn_Click(object sender, EventArgs e)
@@ -92,8 +86,20 @@ namespace Alarm_CSharp
             }*/
             /*counter = int.Parse(timePicker1.Value.Hour);
             counter -= int.Parse(DateTime.Now.ToString("hhmmss"));*/
-            
+
             //programmedLbl.Text = "" + d;
+            int d = (int)System.DateTime.Now.DayOfWeek;
+            if (_daysSelected[d] == 1)
+            {
+                int picker = timePicker1.Value.Hour * 24 + timePicker1.Value.Minute * 60 + timePicker1.Value.Second;
+                int pickernow = DateTime.Now.Hour * 24 + DateTime.Now.Minute * 60 + DateTime.Now.Second;
+                counter = picker - pickernow;
+                programmedLbl.Text = "La hora fue programado para sonar a las "+timePicker1.Value.ToString("hhmmss");
+            }
+            else
+            {
+                programmedLbl.Text = "No es hoy";
+            }
             timer.Enabled = true; 
             for(int i = 0; i < _days.Length; i++)
                 _days[i].Enabled = false;

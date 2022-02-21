@@ -37,11 +37,9 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.timePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.timePicker2 = new System.Windows.Forms.DateTimePicker();
             this.submitBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.programmedLbl = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -136,20 +134,11 @@
             // timePicker1
             // 
             this.timePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timePicker1.Location = new System.Drawing.Point(217, 44);
+            this.timePicker1.Location = new System.Drawing.Point(217, 74);
             this.timePicker1.Name = "timePicker1";
             this.timePicker1.ShowUpDown = true;
             this.timePicker1.Size = new System.Drawing.Size(200, 23);
             this.timePicker1.TabIndex = 1;
-            // 
-            // timePicker2
-            // 
-            this.timePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timePicker2.Location = new System.Drawing.Point(217, 109);
-            this.timePicker2.Name = "timePicker2";
-            this.timePicker2.ShowUpDown = true;
-            this.timePicker2.Size = new System.Drawing.Size(200, 23);
-            this.timePicker2.TabIndex = 2;
             // 
             // submitBtn
             // 
@@ -174,20 +163,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(215, 21);
+            this.label1.Location = new System.Drawing.Point(217, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 15);
+            this.label1.Size = new System.Drawing.Size(77, 15);
             this.label1.TabIndex = 5;
-            this.label1.Text = "De:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(217, 78);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(18, 15);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "A:";
+            this.label1.Text = "Hora a sonar:";
             // 
             // label3
             // 
@@ -214,11 +194,9 @@
             this.ClientSize = new System.Drawing.Size(435, 354);
             this.Controls.Add(this.programmedLbl);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.submitBtn);
-            this.Controls.Add(this.timePicker2);
             this.Controls.Add(this.timePicker1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -242,11 +220,9 @@
         private CheckBox checkBox2;
         private CheckBox checkBox1;
         private DateTimePicker timePicker1;
-        private DateTimePicker timePicker2;
         private Button submitBtn;
         private Button clearBtn;
         private Label label1;
-        private Label label2;
         private Label label3;
         private Label programmedLbl;
     }
