@@ -199,6 +199,8 @@
             this.Controls.Add(this.submitBtn);
             this.Controls.Add(this.timePicker1);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Alarm";
             this.Load += new System.EventHandler(this.Form1_Load);

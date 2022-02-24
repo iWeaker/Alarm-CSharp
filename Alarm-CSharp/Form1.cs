@@ -15,11 +15,9 @@ namespace Alarm_CSharp
         private Timer timer;
         private int counter = 0;
         private Assembly assembly;
-        private Stream soundStream;
         private SoundPlayer sp;
 
         public Form1(){
-           
             InitializeComponent();
             checkBox1.CheckedChanged += (sender, e) => changeSelectedCheckbox(sender, e ,0);
             checkBox2.CheckedChanged += (sender, e) => changeSelectedCheckbox(sender, e ,1);
@@ -43,7 +41,6 @@ namespace Alarm_CSharp
             assembly = Assembly.GetExecutingAssembly();
             sp = new SoundPlayer(assembly.GetManifestResourceStream
                 ("Alarm_CSharp.Sound.Alarm.wav"));
-            //sp.Play();
         }
         private void changeSelectedCheckbox(object o, EventArgs args, int e)
         {
@@ -56,54 +53,53 @@ namespace Alarm_CSharp
                     if (_daysSelected[e] == 1)
                         _daysSelected[e] = 0;
                 }
-            
         }
         private void clearBtn_Click(object sender, EventArgs e){
             for (int i = 0; i < _days.Length; i++){
                 _days[i].Checked = false; 
             }
-        }
 
+            if (timer.Enabled)
+            {
+                timer.Stop(); 
+            }
+
+
+        }
         private void OnTimerEvent(object o, EventArgs e)
         {
-
             counter--;
-            if (counter == 0)
-            {
-                timer.Stop();
-                sp.Play();
+            if (counter == 0){
+                //timer.Stop();
+                //sp.Play();
             }
-                
-
-
         }
-
         private void submitBtn_Click(object sender, EventArgs e)
         {
-            /*if ()
-            {
-
-            }*/
-            /*counter = int.Parse(timePicker1.Value.Hour);
-            counter -= int.Parse(DateTime.Now.ToString("hhmmss"));*/
-
-            //programmedLbl.Text = "" + d;
+            int temp = 0; 
+            for (int i = 0; i < _daysSelected.Length; i++){
+                if (_daysSelected[i] == 0){
+                    temp++;
+                }
+                if (temp == 7){
+                    MessageBox.Show("Ingresa alguna fecha"); 
+                    
+                    return; 
+                }
+            }
             int d = (int)System.DateTime.Now.DayOfWeek;
-            if (_daysSelected[d] == 1)
-            {
+            if (_daysSelected[d] == 1){
                 int picker = timePicker1.Value.Hour * 24 + timePicker1.Value.Minute * 60 + timePicker1.Value.Second;
                 int pickernow = DateTime.Now.Hour * 24 + DateTime.Now.Minute * 60 + DateTime.Now.Second;
                 counter = picker - pickernow;
                 programmedLbl.Text = "La hora fue programado para sonar a las "+timePicker1.Value.ToString("hhmmss");
             }
-            else
-            {
+            else{
                 programmedLbl.Text = "No es hoy";
             }
             timer.Enabled = true; 
             for(int i = 0; i < _days.Length; i++)
                 _days[i].Enabled = false;
-
         }
     }
 }
