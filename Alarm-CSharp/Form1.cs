@@ -64,14 +64,27 @@ namespace Alarm_CSharp
                 timer.Stop(); 
             }
 
+            changeCheckBoxEnabled(true);
+            programmedLbl.Text = "Ninguno"; 
 
         }
+
+        private void changeCheckBoxEnabled(bool action)
+        {
+            for (int i = 0; i < _days.Length; i++)
+                _days[i].Enabled = action ;
+        }
+
         private void OnTimerEvent(object o, EventArgs e)
         {
             counter--;
             if (counter == 0){
-                //timer.Stop();
-                //sp.Play();
+                timer.Stop();
+                sp.Play();
+            }
+            else if(counter < 0){
+                counter = 0;
+                timer.Stop(); 
             }
         }
         private void submitBtn_Click(object sender, EventArgs e)
@@ -92,14 +105,13 @@ namespace Alarm_CSharp
                 int picker = timePicker1.Value.Hour * 24 + timePicker1.Value.Minute * 60 + timePicker1.Value.Second;
                 int pickernow = DateTime.Now.Hour * 24 + DateTime.Now.Minute * 60 + DateTime.Now.Second;
                 counter = picker - pickernow;
-                programmedLbl.Text = "La hora fue programado para sonar a las "+timePicker1.Value.ToString("hhmmss");
+                programmedLbl.Text = "La hora fue programado para sonar a las\n "+timePicker1.Value.ToString("hh:mm:ss");
             }
             else{
                 programmedLbl.Text = "No es hoy";
             }
-            timer.Enabled = true; 
-            for(int i = 0; i < _days.Length; i++)
-                _days[i].Enabled = false;
+            timer.Enabled = true;
+            changeCheckBoxEnabled(false); 
         }
     }
 }
